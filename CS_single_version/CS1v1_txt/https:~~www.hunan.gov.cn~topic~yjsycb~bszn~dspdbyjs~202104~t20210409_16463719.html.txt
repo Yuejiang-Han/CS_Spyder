@@ -1,0 +1,18 @@
+{
+    "url": "https://www.hunan.gov.cn/topic/yjsycb/bszn/dspdbyjs/202104/t20210409_16463719.html",
+    "一、一件事名称": "我要办理执业药师变更注册",
+    "二、受理情形": "自然人",
+    "三、是否收费": "不收费",
+    "四、办理事项": "执业药师变更注册",
+    "五、承诺时限": "10个工作日",
+    "六、申请条件": "材料齐全且符合法定形式。",
+    "七、所需材料": "",
+    "八、办理流程": "",
+    "九、受理地址及电话": "",
+    "images": [
+        "/home/enoc2/hyj/images/d287f91abf994c98912c091b71009f16.png",
+        "/home/enoc2/hyj/images/32202fbf6ff8462bac9399b51af14ffd.png",
+        "/home/enoc2/hyj/images/fe9e15e6b9f9478eaafb2bed52e1caf3.png",
+        "/home/enoc2/hyj/images/9aca686dbb404f6b94506b3780a46d11.png"
+    ]
+}

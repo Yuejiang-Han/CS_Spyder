@@ -1,0 +1,16 @@
+{
+    "url": "https://www.hunan.gov.cn/topic/yjsycb/bszn/dspdbyjs/202104/t20210408_16450213.html",
+    "一、事项名称": "“我要办安全生产知识和管理能力考核合格证”",
+    "二、服务对象": "企业法人",
+    "三、办理事项": "其他非煤矿山、危险化学品、烟花爆竹、金属冶炼等生产经营单位主要负责人和安全生产管理人员的安全生产合格证",
+    "四、事项类型": "行政确认",
+    "五、材料清单": "",
+    "六、承诺时限": "10个工作日",
+    "七、办理流程": "",
+    "八、受理地址及电话": "",
+    "images": [
+        "/home/enoc2/hyj/images/733fa0332e7f46a9a07222d4c136db6e.png",
+        "/home/enoc2/hyj/images/de083de1d1d840609528a335fbadf7a5.png",
+        "/home/enoc2/hyj/images/99cf924a5f164e1bb2e53b033bc3d34e.png"
+    ]
+}

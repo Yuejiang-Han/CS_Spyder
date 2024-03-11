@@ -1,0 +1,20 @@
+{
+    "url": "https://www.hunan.gov.cn/topic/yjsycb/bszn/db2/201912/t20191224_11004157.html",
+    "一、事项名称": "我要开发票",
+    "二、服务对象": "自然人、企业法人",
+    "三、办理事项": "代开增值税专用发票、代开增值税普通发票",
+    "四、事项类型": "公共服务",
+    "五、材料清单": "1. 代开增值税专用发票的货物运输业小规模纳税人：\n\n\n\n\n\n　　2. 申请代开增值税专用发票的其他纳税人：\n\n\n\n\n\n　　代开增值税普通发票",
+    "六、承诺时限": "1 个工作日",
+    "七、办事流程图": "",
+    "八、受理地址及电话": "",
+    "images": [
+        "/home/enoc2/hyj/images/dfd66711708f45bfb930e37376061111.png",
+        "/home/enoc2/hyj/images/2734ae87878a4e1ba1612346f7c152be.png",
+        "/home/enoc2/hyj/images/c2a20ca178574957910df520f88abddc.png",
+        "/home/enoc2/hyj/images/c9f3b894bf4948138c7df504bcae846f.png",
+        "/home/enoc2/hyj/images/5e9743354bb348d4b1b8697c0f4b8424.png",
+        "/home/enoc2/hyj/images/55521a1c80c94fbea57799c6e5e9bee1.png",
+        null
+    ]
+}

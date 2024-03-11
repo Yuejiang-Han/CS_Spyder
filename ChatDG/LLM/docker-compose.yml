@@ -1,0 +1,113 @@
+version: "3.8"
+services:
+  model-controller:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/chatdg-model-hub:1.0.0
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - /usr/share/zoneinfo:/usr/share/zoneinfo
+    ports:
+      - "8101:8100"
+    command:
+      [
+        "python3",
+        "-m",
+        "fastchat.serve.controller",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8100",
+      ]
+
+  webui:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/chatdg-model-hub:1.0.0
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - /usr/share/zoneinfo:/usr/share/zoneinfo
+    ports:
+      - "31753:8101"
+    command:
+      [
+        "python3",
+        "-m",
+        "fastchat.serve.gradio_web_server",
+        "--port",
+        "8101",
+        "--controller-url",
+        "http://model-controller:8100",
+        "--model-list-mode",
+        "reload",
+      ]
+    depends_on:
+      - model-controller
+
+  api-server:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/chatdg-model-hub:1.0.0
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - /usr/share/zoneinfo:/usr/share/zoneinfo
+    ports:
+      - "32062:8102"
+    command:
+      [
+        "python3",
+        "-m",
+        "fastchat.serve.openai_api_server",
+        "--controller-address",
+        "http://model-controller:8100",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8102",
+      ]
+    depends_on:
+      - model-controller
+
+  baichuan-worker-vllm:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/chatdg-model-hub:1.0.0
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - /usr/share/zoneinfo:/usr/share/zoneinfo
+      - /mnt/data/models:/mnt/data/models
+    #注意：根据具体的部署资源修改gpu数量及id等信息  
+    command:
+      [
+        "python3",
+        "-m",
+        "fastchat.serve.model_worker",
+        "--model-path",
+        "/mnt/data/models/Baichuan2-13B-Chat",
+        "--model-names",
+        "Baichuan2-13B-Chat",
+        "--controller-address",
+        "http://model-controller:8100",
+        "--worker-address",
+        "http://baichuan-worker-vllm:8103",
+        "--trust-remote-code",
+        "--num-gpus",
+        "2",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8103",
+      ]
+    ports:
+      - "8104"
+    shm_size: 10.24gb
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: "nvidia"
+              device_ids: ["0","1"]
+              capabilities: ["gpu"]
+    depends_on:
+      - model-controller
+
+networks:
+  default:
+    name: chatdg-model-hub
+    external: true

@@ -1,0 +1,15 @@
+{
+    "host": "0.0.0.0",
+    "port": 8000,
+    "log_level": "info",
+    "workers": 1,
+    "openai_api_base": "http://43.225.216.221:32061/v1",
+    "chat_model": "Baichuan2-13B-Chat",
+    "agent_model": "Qwen-14B-Chat",
+    "redis_url": "redis://:IHP8cJWHl@43.225.216.221:8061/0",
+    "embedding_url": "http://43.225.216.221:8000",
+    "embedding_model": "m3e-large",
+    "milvus_url": "milvus://43.225.216.221:8200/yhz_test",
+    "score_threshold": 550,
+    "mysql_url": "mysql+pymysql://root:IHP8cJWHl@43.225.216.221:8060/cognition-chat?charset=utf8"
+}

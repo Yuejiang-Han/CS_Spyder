@@ -1,0 +1,67 @@
+version: "3.8"
+
+services:
+  etcd:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/etcd:v3.5.5
+    environment:
+      TZ: Asia/Shanghai
+      ETCD_AUTO_COMPACTION_MODE: revision
+      ETCD_AUTO_COMPACTION_RETENTION: 1000
+      ETCD_QUOTA_BACKEND_BYTES: 4294967296
+      ETCD_SNAPSHOT_COUNT: 50000
+    volumes:
+      - ${DATA_ROOT_DIR}/etcd:/etcd
+    restart: always
+    command: etcd -advertise-client-urls=http://127.0.0.1:2379 -listen-client-urls http://0.0.0.0:2379 --data-dir /etcd
+
+  minio:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/minio:RELEASE.2022-03-17T06-34-49Z
+    environment:
+      TZ: Asia/Shanghai
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    volumes:
+      - ${DATA_ROOT_DIR}/milvus_minio:/minio_data
+    command: minio server /minio_data --console-address '0.0.0.0:8202'
+    restart: always
+    ports:
+      - "$MILVUS_MINIIO_PORT:9000"
+      - "$MILVUS_MINIIO_WEB_PORT:8202"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  milvus:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/milvus:v2.2.8
+    command: ["milvus", "run", "standalone"]
+    environment:
+      TZ: Asia/Shanghai
+      ETCD_ENDPOINTS: etcd:2379
+      MINIO_ADDRESS: minio:9000
+      LOG_LEVEL: info
+    volumes:
+      - ${DATA_ROOT_DIR}/milvus:/var/lib/milvus
+    restart: always
+    ports:
+      - "${MILVUS_PORT}:19530"
+      #- "19091:9091"
+    depends_on:
+      - "etcd"
+      - "minio"
+
+  attu-web:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/attu:v2.2.3
+    environment:
+      TZ: Asia/Shanghai
+      MILVUS_URL: milvus:19530
+    ports:
+      - $ATTU_WEB:3000
+    restart: always
+    depends_on:
+      - milvus
+
+networks:
+  default:
+    name: ${NETWORK_NAME}

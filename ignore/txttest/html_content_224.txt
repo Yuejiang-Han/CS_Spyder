@@ -1,0 +1,18 @@
+{
+    "url": "https://www.hunan.gov.cn/topic/yjsycb/bszn/dspdbyjs/202104/t20210409_16463659.html",
+    "一、一件事名称": "我要申请不涉及技术内容的国产药品变更备案",
+    "二、受理情形": "自然人",
+    "三、是否收费": "不收费",
+    "四、办理事项": "国产药品不改变药品内在质量的补充申请",
+    "五、承诺时限": "10个工作日",
+    "六、申请条件": "材料齐全且符合法定形式。",
+    "七、所需材料": "",
+    "八、办理流程": "",
+    "九、受理地址及电话": "",
+    "images": [
+        "/home/enoc2/hyj/images/a604b77c36304a4c9f681ebc96504979.png",
+        "/home/enoc2/hyj/images/c2433f109f324cd79fdeacf9d6f8991d.png",
+        "/home/enoc2/hyj/images/f946e6be2ca84bd0aee8182aae91b23e.png",
+        "/home/enoc2/hyj/images/d2d97af35f0e4febbbeb2cebfc6fe5d6.png"
+    ]
+}

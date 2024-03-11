@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  chatdg-embedding:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/chatdg-embedding:1.0.0
+    container_name: chatdg-embedding-hyj
+    environment:
+      - TZ=Asia/Shanghai
+    command: ["python3", "-m", "chatdg_embedding.serve.chatdg_embedding_api"]
+    volumes:
+      - /mnt/data/models:/mnt/data/models
+    restart: always
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: "nvidia"
+              device_ids: ["0"]
+              capabilities: ["gpu"]

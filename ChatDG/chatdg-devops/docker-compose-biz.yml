@@ -1,0 +1,95 @@
+version: "3.8"
+
+services:
+  chatdg-web:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/chatdg-platform-web:$IMAGE_TAG
+    environment:
+      - TZ=Asia/Shanghai
+      - NGINX_PORT=$WEB_HTTP_PORT
+      - API_URL=http://$HOST_NAME:$GATEWAY_PORT
+    restart: always
+    network_mode: "host"
+    volumes:
+      - ./certs:/certs
+
+  chatdg-gateway:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/cognition-platform:$IMAGE_TAG
+    environment:
+      - SERVER_PORT=$GATEWAY_PORT
+      - TZ=Asia/Shanghai
+      - NACOS_SERVER_ADDR=$HOST_NAME:$NACOS_PORT
+    command: "java -jar -Xms4g -Xmx4g -Xlog:gc cognition-gateway.jar"
+    network_mode: "host"
+    restart: always
+
+  chatdg-auth:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/cognition-platform:$IMAGE_TAG
+    environment:
+      - SERVER_PORT=$AUTH_SERVICE_PORT
+      - TZ=Asia/Shanghai
+      - NACOS_SERVER_ADDR=$HOST_NAME:$NACOS_PORT
+      - NACOS_DISCOVERY_ENABLED=true
+      - MYSQL_HOST=$HOST_NAME
+      - MYSQL_PORT=$MYSQL_PORT
+      - MYSQL_USERNAME=root
+      - REDIS_HOST=$HOST_NAME
+      - REDIS_PORT=$REDIS_PORT
+    command: "java -jar -Xms4g -Xmx4g -Xlog:gc cognition-auth-server.jar"
+    network_mode: "host"
+    volumes:
+      - ${DATA_ROOT_DIR}/biz/logs:/app/logs
+    restart: always
+
+  chatdg-system:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/cognition-platform:$IMAGE_TAG
+    environment:
+      - SERVER_PORT=$SYSTEM_SERVICE_PORT
+      - TZ=Asia/Shanghai
+      - NACOS_SERVER_ADDR=$HOST_NAME:$NACOS_PORT
+      - NACOS_DISCOVERY_ENABLED=true
+      - MYSQL_HOST=$HOST_NAME
+      - MYSQL_PORT=$MYSQL_PORT
+      - MYSQL_USERNAME=root
+      - REDIS_HOST=$HOST_NAME
+      - REDIS_PORT=$REDIS_PORT
+      - MINIO_ENDPOINT=http://$HOST_NAME:$MINIIO_PORT
+    command: "java -jar -Xms4g -Xmx4g -Xlog:gc cognition-system.jar"
+    network_mode: "host"
+    volumes:
+      - ${DATA_ROOT_DIR}/biz/logs:/app/logs
+    restart: always
+
+  chatdg-chat:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/cognition-platform:$IMAGE_TAG
+    environment:
+      - SERVER_PORT=$CHAT_SERVICE_PORT
+      - TZ=Asia/Shanghai
+      - NACOS_SERVER_ADDR=$HOST_NAME:$NACOS_PORT
+      - NACOS_DISCOVERY_ENABLED=true
+      - MYSQL_HOST=$HOST_NAME
+      - MYSQL_PORT=$MYSQL_PORT
+      - MYSQL_USERNAME=root
+      - REDIS_HOST=$HOST_NAME
+      - REDIS_PORT=$REDIS_PORT
+      - LLM_BASE_URL=http://$HOST_NAME:$CHATDG_LLM_PORT
+    command: "java -jar -Xms4g -Xmx4g -Xlog:gc cognition-chat.jar"
+    network_mode: "host"
+    volumes:
+      - ${DATA_ROOT_DIR}/biz/logs:/app/logs
+    restart: always
+
+  chatdg-llm:
+    image: registry.cn-hangzhou.aliyuncs.com/chatdg/chatdg-llm:$IMAGE_TAG
+    environment:
+      - TZ=Asia/Shanghai
+    command: ["python3", "-u", "-m", "chatdg_llm.serve.chat_api"]
+    volumes:
+      - $CHATDG_LLM_CONFIG:/app/config/chatdg-llm.json
+      - ${DATA_ROOT_DIR}/biz/logs:/app/logs
+    restart: always
+    ports:
+      - $CHATDG_LLM_PORT:8000
+
+networks:
+  default:
+    name: ${NETWORK_NAME}

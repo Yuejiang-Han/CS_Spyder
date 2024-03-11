@@ -1,0 +1,18 @@
+{
+    "url": "https://www.hunan.gov.cn/topic/yjsycb/bszn/dspdbyjs/202104/t20210409_16463481.html",
+    "一、一件事名称": "我要办理个体工商户变更登记",
+    "二、受理情形": "自然人、企业法人",
+    "三、是否收费": "不收费",
+    "四、办理事项": "个体工商户变更登记",
+    "五、承诺时限": "1个工作日",
+    "六、申请条件": "已注册登记的个体工商户。",
+    "七、所需材料": "",
+    "八、办理流程": "",
+    "九、受理地址及电话": "",
+    "images": [
+        "/home/enoc2/hyj/images/d3316e784f1b4f119a3e29f6accfe5e1.png",
+        "/home/enoc2/hyj/images/743c52b2001849cca0a6891fb8dee5bd.png",
+        "/home/enoc2/hyj/images/b378a71d156b4c78a4511a48698c8623.png",
+        "/home/enoc2/hyj/images/77bfa582d4a449aa9de3c69347345804.png"
+    ]
+}

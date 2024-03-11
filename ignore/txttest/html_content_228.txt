@@ -1,0 +1,18 @@
+{
+    "url": "https://www.hunan.gov.cn/topic/yjsycb/bszn/dspdbyjs/202104/t20210409_16463607.html",
+    "一、一件事名称": "我要申请航空安全员资格认定",
+    "二、受理情形": "自然人",
+    "三、是否收费": "不收费",
+    "四、办理事项": "航空安全员资格认定",
+    "五、承诺时限": "1个工作日",
+    "六、申请条件": "材料齐全且符合法定形式。",
+    "七、所需材料": "",
+    "八、办理流程": "",
+    "九、受理地址及电话": "",
+    "images": [
+        "/home/enoc2/hyj/images/1c53a4f671f84efd99b7aa191c30f76c.png",
+        "/home/enoc2/hyj/images/0f3edc2e8aa049589c5a9046c529b74b.png",
+        "/home/enoc2/hyj/images/1af88167260a4a2a8f757b490fdd1425.png",
+        "/home/enoc2/hyj/images/b5d61e142b374950814114e0b3c4f178.png"
+    ]
+}

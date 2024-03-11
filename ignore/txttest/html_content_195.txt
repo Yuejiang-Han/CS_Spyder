@@ -1,0 +1,16 @@
+{
+    "url": "https://www.hunan.gov.cn/topic/yjsycb/bszn/db2/201912/t20191224_11004180.html",
+    "一、事项名称": "我要办理护士执业注册",
+    "二、服务对象": "自然人",
+    "三、办理事项": "护士执业注册",
+    "四、事项类型": "行政许可",
+    "五、材料清单": "",
+    "六、承诺时限": "12 个工作",
+    "七、办事流程图": "",
+    "八、受理地址及电话": "",
+    "images": [
+        "/home/enoc2/hyj/images/a64b8817dc1649eb8e8b64bf7897e1de.png",
+        "/home/enoc2/hyj/images/c9c1592444d248bfa1154c8c039159ec.png",
+        "/home/enoc2/hyj/images/c7a8934ea3fc4cc9b5d31548fa7e6e93.png"
+    ]
+}

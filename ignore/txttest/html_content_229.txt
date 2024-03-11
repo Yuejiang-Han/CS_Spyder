@@ -1,0 +1,17 @@
+{
+    "url": "https://www.hunan.gov.cn/topic/yjsycb/bszn/dspdbyjs/202104/t20210409_16463601.html",
+    "一、一件事名称": "我要申领医保电子凭证",
+    "二、受理情形": "企业法人",
+    "三、是否收费": "不收费",
+    "四、办理事项": "医保电子凭证申领",
+    "五、承诺时限": "即时",
+    "六、申请条件": "辖区内职工基本医疗保险和城乡居民基本医疗保险参保人员。",
+    "七、所需材料": "无需申报材料，全程网办",
+    "八、办理流程": "",
+    "九、受理地址及电话": "",
+    "images": [
+        "/home/enoc2/hyj/images/48462eaa06bf4fb9837f8a869ea4f0c7.png",
+        "/home/enoc2/hyj/images/1e37e06db08f4607a95be617b078c4fb.png",
+        "/home/enoc2/hyj/images/ec0f88860d7c4ff3b12de80c0926426e.png"
+    ]
+}
